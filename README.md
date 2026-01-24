@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="gmn.png" alt="gmn logo" width="150">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go">
   <img src="https://img.shields.io/github/v/release/tomohiro-owada/gmn?style=for-the-badge" alt="Release">
   <img src="https://img.shields.io/github/license/tomohiro-owada/gmn?style=for-the-badge" alt="License">
