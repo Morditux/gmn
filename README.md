@@ -40,7 +40,18 @@ $ time gemini -p "hi" > /dev/null
 
 ## 📦 Installation
 
-### Homebrew (coming soon)
+### ⚠️ Prerequisites (Required)
+
+**gmn does not have its own authentication.** You must authenticate once using the official Gemini CLI first:
+
+```bash
+npm install -g @google/gemini-cli
+gemini  # Choose "Login with Google"
+```
+
+gmn reuses these credentials automatically from `~/.gemini/`. Your free tier quota or Workspace Code Assist quota applies.
+
+### Homebrew
 ```bash
 brew install tomohiro-owada/tap/gmn
 ```
@@ -52,17 +63,6 @@ go install github.com/tomohiro-owada/gmn@latest
 
 ### Binary
 Download from [Releases](https://github.com/tomohiro-owada/gmn/releases)
-
-### Prerequisites
-
-Authenticate once using the official Gemini CLI:
-
-```bash
-npm install -g @google/gemini-cli
-gemini  # Choose "Login with Google"
-```
-
-gmn reuses these credentials automatically from `~/.gemini/`
 
 ## 🚀 Quick Start
 
