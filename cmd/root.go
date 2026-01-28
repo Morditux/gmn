@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -155,6 +156,21 @@ func run(cmd *cobra.Command, args []string) error {
 			return err
 		}
 		projectID = loadResp.CloudAICompanionProject
+
+		// If no project ID and we have ineligible tier info, show helpful message
+		if projectID == "" && len(loadResp.IneligibleTiers) > 0 {
+			var reasons []string
+			for _, tier := range loadResp.IneligibleTiers {
+				if tier.ReasonMessage != "" {
+					reasons = append(reasons, tier.ReasonMessage)
+				}
+			}
+			if len(reasons) > 0 {
+				errMsg := fmt.Errorf("unable to use Gemini: %s", strings.Join(reasons, ", "))
+				formatter.WriteError(errMsg)
+				return errMsg
+			}
+		}
 
 		// Cache the project ID for next time
 		userTier := ""

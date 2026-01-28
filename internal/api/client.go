@@ -185,14 +185,24 @@ type ClientMetadata struct {
 
 // LoadCodeAssistResponse is the response from loadCodeAssist
 type LoadCodeAssistResponse struct {
-	CurrentTier             *UserTier `json:"currentTier,omitempty"`
-	CloudAICompanionProject string    `json:"cloudaicompanionProject,omitempty"`
+	CurrentTier             *UserTier        `json:"currentTier,omitempty"`
+	IneligibleTiers         []IneligibleTier `json:"ineligibleTiers,omitempty"`
+	CloudAICompanionProject string           `json:"cloudaicompanionProject,omitempty"`
 }
 
 // UserTier represents a user's tier
 type UserTier struct {
 	ID   string `json:"id"`
 	Name string `json:"name,omitempty"`
+}
+
+// IneligibleTier represents a tier the user is not eligible for
+type IneligibleTier struct {
+	ReasonCode    string `json:"reasonCode"`
+	ReasonMessage string `json:"reasonMessage"`
+	TierID        string `json:"tierId"`
+	TierName      string `json:"tierName"`
+	ValidationURL string `json:"validationUrl,omitempty"`
 }
 
 // LoadCodeAssist loads the user's Code Assist status and returns the project ID
